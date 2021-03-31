@@ -44,7 +44,6 @@ const CartItem = (props) => {
     return (
         <div>
             <h1>Checkout</h1>
-            <h4> {cartProduct?.name} <span> &#2547; {cartProduct?.price}</span></h4>
             <TableContainer component={Paper}>
                     <Table className="" aria-label="spanning table">
                         <TableHead>
