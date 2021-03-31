@@ -22,3 +22,15 @@ export const handleGoogleSignIn = () =>{
         console.error(errorMessage,errorCode);
     });
 }
+
+export const handleSignOut = () => {
+    return firebase.auth().signOut()
+    .then(res => {
+      const signedOutUser = {
+        isSignedIn: false
+      }
+      return signedOutUser;
+    }).catch(err => {
+      // An error happened.
+    });
+  }

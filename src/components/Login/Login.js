@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import { useHistory, useLocation } from 'react-router';
 import { UserContext } from '../../App';
-import { initializeLogin,handleGoogleSignIn } from './ManageLogin';
+import { initializeLogin,handleGoogleSignIn,handleSignOut } from './ManageLogin';
+import Button from '@material-ui/core/Button';
 
 const Login = () => {
     initializeLogin()
@@ -19,6 +20,7 @@ const Login = () => {
             handleResponse(res, true);
         })
     }
+    
     const handleResponse = (res, redirect)=>{
         setLoggedInUser(res)
         if(redirect){
@@ -28,8 +30,8 @@ const Login = () => {
 
     return (
         <div>
-            <h3>login component</h3>
-            <button onClick={googleSignIn}>Continue with google</button>
+            <h3>login</h3>
+            <Button onClick={googleSignIn}>Continue with google</Button>
         </div>
     );
 };

@@ -1,0 +1,27 @@
+.productCar{
+    max-width: 340px;
+    float: left;
+    margin-left: 40px;
+    margin-bottom: 25px;
+}
+.cardMedia{
+    height:340px;
+    width:350px;
+}
+.buyButton{
+    margin-left: 130px !important;
+}
+@media screen and (max-width: 600px) {
+    .productCar{
+        margin: 10px;
+        padding: 5px;
+        max-width: 300px;
+    }
+    .cardMedia{
+        height:250px;
+        width:280px;
+    }
+    .buyButton{
+        margin-left: 100px !important;
+    }
+  }

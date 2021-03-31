@@ -13,42 +13,61 @@ import Login from './components/Login/Login';
 import AddProduct from './components/AddProduct/AddProduct';
 import CartItem from './components/CartItem/CartItem';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import Button from '@material-ui/core/Button';
+import { handleSignOut } from './components/Login/ManageLogin';
+//material ui
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+//end material ui
 export const UserContext = createContext();
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
+  //logout
+  const signOut = () => {
+    handleSignOut()
+    .then(res => {
+        handleResponse(res);
+    })
+  }
+  const handleResponse = res=>{
+    setLoggedInUser(res)
+  }
+  //material ui function
+  
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]} >
     <Router>
+    <AppBar className="navBar" position="static">
+        <Toolbar className="navItems">
+          <Typography className="navItem" variant="h6">
+            <Link className="navItemLink" to="/">Home</Link>
+          </Typography>
+          <Typography variant="h6">
+            <Link className="navItemLink" to="/order">Order</Link>
+          </Typography>
+            <Typography variant="h6">
+          <Link className="navItemLink" to="/dashboard">Dashboard</Link>
+          </Typography>
+            <Typography variant="h6">
+          <Link className="navItemLink" to="/addProduct">Add Product</Link>
+          </Typography>
+          <Typography variant="h6" color="inherit">
+            <Link className="navItemLink" to="/login">{loggedInUser.email? <Button onClick={signOut}>Logout</Button>:<Button>Login</Button>}</Link>
+          </Typography>
+        </Toolbar>
+      </AppBar>
       <div>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/order">Order</Link>
-          </li>
-          <li>
-            <Link to="/dashboard">Dashboard</Link>
-          </li>
-          <li>
-            <Link to="/addProduct">Add Product</Link>
-          </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-        </ul>
-
-        <hr />
         <Switch>
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/order">
+          <PrivateRoute path="/order">
             <Order />
-          </Route>
-          <Route path="/dashboard">
+          </PrivateRoute>
+          <PrivateRoute path="/dashboard">
             <Dashboard />
-          </Route>
+          </PrivateRoute>
           <Route path="/addProduct">
             <AddProduct />
           </Route>

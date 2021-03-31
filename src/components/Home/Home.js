@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ProductDetails from '../ProductDetails/ProductDetails';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const Home = () => {
     const [products, setProducts] = useState([]);
@@ -13,7 +14,13 @@ const Home = () => {
     },[])
     return (
         <div>
-            <h3>home component</h3>
+            <h3>Feature Products</h3>
+            {
+                
+                products.length === 0 && <CircularProgress />
+            
+                
+            }
             {
                 products.map( product => <ProductDetails product = {product}></ProductDetails>)
             }

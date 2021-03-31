@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import axios from 'axios'
+
 const AddProduct = () => {
     const { register, handleSubmit, watch, errors } = useForm();
     const onSubmit = data => {
@@ -19,6 +20,7 @@ const AddProduct = () => {
             body: JSON.stringify(productData)
         })
         .then(res =>{
+            alert('Product Added Successfully!!');
             console.log('product added response from server', res);
         })
         console.log(data)
@@ -53,6 +55,7 @@ const AddProduct = () => {
                 </p>
                 <input type="submit" />
             </form>
+        
         </div>
     );
 };
