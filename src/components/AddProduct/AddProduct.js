@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import axios from 'axios'
+import { Redirect } from 'react-router';
 
 const AddProduct = () => {
     const { register, handleSubmit, watch, errors } = useForm();
