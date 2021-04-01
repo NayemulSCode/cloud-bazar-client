@@ -11,7 +11,7 @@ const AddProduct = () => {
             weight: data.weight,
             price: data.price
         };
-        const url = `http://localhost:5000/addProduct`;
+        const url = `https://apricot-sundae-20882.herokuapp.com/addProduct`;
         fetch(url,{
             method:'POST',
             headers: {

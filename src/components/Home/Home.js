@@ -5,7 +5,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 const Home = () => {
     const [products, setProducts] = useState([]);
     useEffect(()=>{
-        fetch('http://localhost:5000/products')
+        fetch('https://apricot-sundae-20882.herokuapp.com/products')
         .then(res => res.json())
         .then(data =>{
             setProducts(data);

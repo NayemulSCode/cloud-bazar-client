@@ -16,12 +16,12 @@ const CartItem = (props) => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
     //order start
-    const handleOrderSubmit = data =>{
+    const handleOrderSubmit = () =>{
         const orderDetails = {...loggedInUser, ...cartProduct, orderTime: new Date()}
-        fetch('http://localhost:5000/addOrder',{
+        fetch('https://apricot-sundae-20882.herokuapp.com/addOrder',{
             method: 'POST',
             headers:{
-                'content-type':'application/json'
+                'Content-Type':'application/json'
             },
             body: JSON.stringify(orderDetails)
         })
@@ -37,7 +37,7 @@ const CartItem = (props) => {
     const [product, setProduct]= useState([]);
     const cartProduct = product.find(carId => carId._id == id)
     useEffect(()=>{
-        fetch('http://localhost:5000/products')
+        fetch('https://apricot-sundae-20882.herokuapp.com/products')
         .then(res => res.json())
         .then(data => setProduct(data))
     },[])

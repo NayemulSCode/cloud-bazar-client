@@ -38,7 +38,7 @@ const StyledTableCell = withStyles((theme) => ({
 const Dashboard = () => {
     const [product, setProduct] = useState([])
     useEffect(() => {
-       fetch('http://localhost:5000/products')
+       fetch('https://apricot-sundae-20882.herokuapp.com/products')
        .then(res => res.json())
        .then(data => setProduct(data))
     }, [])
@@ -47,7 +47,7 @@ const Dashboard = () => {
     //delete product
     const handleDeleteProduct = id =>{
       console.log('button clicked')
-      fetch(`http://localhost:5000/products/${id}`,{
+      fetch(`https://apricot-sundae-20882.herokuapp.com/products/${id}`,{
         method: 'DELETE'
       })
       .then(res => res.json())
